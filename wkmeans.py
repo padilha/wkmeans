@@ -15,7 +15,7 @@ def wkmeans(data, k, weights, max_iter=500, tol=1e-4):
         labels = __expectation(data, centroids)
         centroids = __maximization(data, weights, k, labels)
 
-        if _sqfrobenius(centroids - old_centroids) <= tol:
+        if __sqfrobenius(centroids - old_centroids) <= tol:
             break
 
     return __expectation(data, centroids)
@@ -25,7 +25,7 @@ def __expectation(data, centroids):
     return np.argmin(distances, axis=1) # array of labels
 
 def __maximization(data, weights, k, labels):
-    return np.array([_update_centroid(data, weights, np.where(labels == i)[0]) for i in range(k)])
+    return np.array([__update_centroid(data, weights, np.where(labels == i)[0]) for i in range(k)])
 
 def __update_centroid(data, weights, indices):
     return np.sum(weights[indices, np.newaxis] * data[indices], axis=0) / np.sum(weights[indices])
