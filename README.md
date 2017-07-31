@@ -8,7 +8,6 @@ In Proceedings of the tenth ACM SIGKDD international conference on Knowledge dis
 (pp. 551-556). ACM.
 
 ## Installation
-
   pip install -r requirements.txt
   python setup.py install
 
