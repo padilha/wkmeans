@@ -2,7 +2,7 @@
 
 wkmeans is a simple implementation of the k-means clustering algorithm with weighted objects.
 
-This package is based on the paper:
+This package is based on the paper:  
 Dhillon, I. S., Guan, Y., & Kulis, B. (2004). Kernel k-means, spectral clustering and normalized cuts.
 In Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining
 (pp. 551-556). ACM.
