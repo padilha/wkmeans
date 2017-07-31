@@ -9,7 +9,8 @@ In Proceedings of the tenth ACM SIGKDD international conference on Knowledge dis
 
 ## Installation
 
-TO DO
+  pip install -r requirements.txt
+  python setup.py install
 
 ### Dependencies
 
@@ -19,16 +20,16 @@ See requirements.txt.
 
 ```python
 from sklearn import datasets
-from wkmeans import wkmeans
 
 import numpy as np
+import wkmeans
 
 data = datasets.load_iris().data
 
 # generating random weights in the interval [0.0, 1.0)
 weights = np.random.uniform(0.0, 1.0, size=data.shape[0])
 
-labels = wkmeans(data, k=3, weights=weights, max_iter=500, tol=1e-4)
+labels = wkmeans.run(data, k=3, weights=weights, max_iter=500, tol=1e-4)
 
 print(labels)
 ```

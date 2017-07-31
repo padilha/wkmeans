@@ -21,7 +21,7 @@ import numpy as np
 from scipy.spatial.distance import sqeuclidean
 from sklearn.utils.validation import check_array
 
-def wkmeans(data, k, weights, max_iter=500, tol=1e-4):
+def run(data, k, weights, max_iter=500, tol=1e-4):
     """Performs weighted k-means.
 
     Parameters
