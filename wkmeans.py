@@ -1,9 +1,46 @@
+"""
+    wkmeans: a simple implementation of the k-means clustering algorithm with weighted objects.
+    Copyright (C) 2017  Victor Alexandre Padilha
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
 import numpy as np
 
 from scipy.spatial.distance import sqeuclidean
 from sklearn.utils.validation import check_array
 
 def wkmeans(data, k, weights, max_iter=500, tol=1e-4):
+    """Performs weighted k-means.
+
+    Parameters
+    ----------
+    data : numpy.ndarray (n_objects, n_features)
+        Dataset to cluster.
+
+    k : int
+        Number of clusters to form.
+
+    weights : numpy.array (n_objects)
+        Weights of the objects contained in the dataset.
+
+    max_iter : int
+        Maximum number of iterations to perform.
+
+    tol : float
+        Maximum total shift of the centroids between two iterations (measured by the squared Frobenius norm).
+    """
     data = check_array(data, dtype=np.double, copy=True)
     __check_params(data, k, weights, max_iter, tol)
 
@@ -45,13 +82,3 @@ def __check_params(data, k, weights, max_iter, tol):
 
     if tol < 0.0:
         raise ValueError("tol must be >= 0.0, got {}".format(tol))
-
-if __name__ == '__main__':
-    from sklearn import datasets
-    data = datasets.load_iris().data
-    print data.shape
-    #weights = (np.arange(10) + 1) / 10.0
-    weights = np.ones(data.shape[0], dtype=np.double)
-    iris_weights = np.random.choice(weights, size=data.shape[0], replace=True)
-    labels = wkmeans(data, k=3, weights=iris_weights, max_iter=500, tol=1e-4)
-    print labels
