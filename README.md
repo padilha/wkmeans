@@ -13,7 +13,8 @@ In Proceedings of the tenth ACM SIGKDD international conference on Knowledge dis
 
 ### Dependencies
 
-See requirements.txt.
+Python 3.3+ recommended.  
+Also, see requirements.txt.
 
 ## Example of use
 
