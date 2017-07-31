@@ -32,7 +32,7 @@ def run(data, k, weights, max_iter=500, tol=1e-4):
     k : int
         Number of clusters to form.
 
-    weights : numpy.array (n_objects)
+    weights : numpy.array (n_objects,)
         Weights of the objects contained in the dataset.
 
     max_iter : int
