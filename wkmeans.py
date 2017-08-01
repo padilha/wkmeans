@@ -18,7 +18,7 @@
 
 import numpy as np
 
-from scipy.spatial.distance import sqeuclidean
+from scipy.spatial.distance import cdist
 from sklearn.utils.validation import check_array
 
 def run(data, k, weights, max_iter=500, tol=1e-4):
@@ -58,7 +58,7 @@ def run(data, k, weights, max_iter=500, tol=1e-4):
     return __expectation(data, centroids)
 
 def __expectation(data, centroids):
-    distances = np.array([[sqeuclidean(x, c) for c in centroids] for x in data])
+    distances = cdist(data, centroids, metric='sqeuclidean')
     return np.argmin(distances, axis=1) # array of labels
 
 def __maximization(data, weights, k, labels):
